@@ -1,6 +1,6 @@
 export default class Alert {
   constructor() {
-    this.path = '/json/alerts.json';
+    this.path = `${import.meta.env.BASE_URL}json/alerts.json`;
   }
 
   async init() {
