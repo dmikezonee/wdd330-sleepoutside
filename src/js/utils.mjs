@@ -56,3 +56,57 @@ export function renderListWithTemplate(
 
   parentElement.insertAdjacentHTML(position, htmlStrings.join(''));
 }
+
+// render a template into an HTML element
+export function renderWithTemplate(
+  template,
+  parentElement,
+  data,
+  callback,
+) {
+  parentElement.innerHTML = template;
+
+  if (callback) {
+    callback(data);
+  }
+}
+
+// load an HTML template from a file
+export async function loadTemplate(path) {
+  const response = await fetch(path);
+
+  if (!response.ok) {
+    throw new Error(`Could not load template: ${path}`);
+  }
+
+  return response.text();
+}
+
+// load the shared header and footer
+export async function loadHeaderFooter() {
+  const base = import.meta.env.BASE_URL;
+
+  let headerTemplate = await loadTemplate(
+    `${base}partials/header.html`,
+  );
+
+  let footerTemplate = await loadTemplate(
+    `${base}partials/footer.html`,
+  );
+
+  // Replace the base URL placeholder with the correct project path
+  headerTemplate = headerTemplate.replaceAll('{{BASE_URL}}', base);
+
+  footerTemplate = footerTemplate.replaceAll('{{BASE_URL}}', base);
+
+  const headerElement = qs('#main-header');
+  const footerElement = qs('#main-footer');
+
+  if (headerElement) {
+    renderWithTemplate(headerTemplate, headerElement);
+  }
+
+  if (footerElement) {
+    renderWithTemplate(footerTemplate, footerElement);
+  }
+}
