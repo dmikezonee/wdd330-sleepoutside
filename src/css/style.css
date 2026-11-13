@@ -1,6 +1,7 @@
 :root {
   --font-body: Arial, Helvetica, sans-serif;
   --font-headline: Haettenschweiler, "Arial Narrow Bold", sans-serif;
+
   /* colors */
   --primary-color: #f0a868;
   --secondary-color: #525b0f;
@@ -75,7 +76,6 @@ p {
   font-size: var(--small-font);
   width: 110px;
   height: 80px;
-
   flex-direction: column;
   align-items: flex-end;
   box-shadow: 1px 1px 4px var(--light-grey);
@@ -114,8 +114,6 @@ button {
   border-bottom: 2px solid var(--primary-color);
 }
 
-/* End utility classes */
-
 /* Cart icon styles */
 .cart {
   padding-top: 1em;
@@ -131,8 +129,7 @@ button {
   fill: gray;
 }
 
-/* End cart icon styles */
-
+/* Mission */
 .mission {
   position: absolute;
   top: 1rem;
@@ -151,6 +148,46 @@ button {
   text-align: center;
 }
 
+/* Category styles */
+.categories {
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.categories h2 {
+  margin-bottom: 1rem;
+}
+
+.category-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.category-list a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  text-decoration: none;
+  color: var(--dark-grey);
+  padding: 0.5rem 0.2rem;
+}
+
+.category-list img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+.category-list h3 {
+  font-size: 0.75em;
+  margin-top: 0.4rem;
+}
+
+/* Product styles */
 .products {
   margin-top: 2rem;
   padding: 1rem;
@@ -168,13 +205,19 @@ button {
   color: var(--dark-grey);
 }
 
-/* Styles for product lists */
 .product-card {
   flex: 1 1 45%;
   margin: 0.25em;
   padding: 0.5em;
   border: 1px solid var(--light-grey);
   max-width: 250px;
+}
+
+.product-card img {
+  display: block;
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
 }
 
 .product-card h2,
@@ -191,8 +234,7 @@ button {
   font-size: 1em;
 }
 
-/* End product list card */
-
+/* Product detail */
 .product-detail {
   padding: 1em;
   max-width: 500px;
@@ -203,12 +245,11 @@ button {
   width: 100%;
 }
 
-/* Start cart list card styles */
+/* Cart list card styles */
 .cart-card {
   display: grid;
   grid-template-columns: 25% auto 15%;
   font-size: var(--small-font);
-  /* max-height: 120px; */
   align-items: center;
 }
 
@@ -254,6 +295,15 @@ button {
   .cart-card {
     font-size: inherit;
     grid-template-columns: 150px auto 15%;
+  }
+
+  .category-list img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .category-list h3 {
+    font-size: 0.9em;
   }
 }
 
