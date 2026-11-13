@@ -26,11 +26,7 @@ export default class ProductDetails {
 
     const productImage = document.querySelector('img.divider');
 
-    productImage.src = this.product.Image.replace(
-      '../images/',
-      `${import.meta.env.BASE_URL}images/`,
-    );
-
+    productImage.src = this.product.PrimaryLarge;
     productImage.alt = this.product.Name;
 
     document.querySelector('.product-card__price').textContent =
