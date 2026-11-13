@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - dm--individual2
+      - dm--remove-cart-item
   workflow_dispatch:
 
 permissions:
